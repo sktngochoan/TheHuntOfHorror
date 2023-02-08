@@ -1,0 +1,43 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Player : MonoBehaviour
+{
+    public Vector2 inputVector2;
+    [SerializeField]
+    private float speed = 4;
+    Rigidbody2D rigid;
+    SpriteRenderer spriteRenderer;
+    Animator animator;
+    void Awake()
+    {
+        rigid = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+    }
+
+    
+    void Update()
+    {
+        inputVector2.x = Input.GetAxisRaw("Horizontal");
+        inputVector2.y = Input.GetAxisRaw("Vertical");
+    }
+
+    private void FixedUpdate()
+    {
+        Vector2 newVec = inputVector2.normalized * speed * Time.deltaTime;
+        rigid.MovePosition(rigid.position + newVec);
+    }
+    private void LateUpdate()
+    {
+        animator.SetFloat("Speed", inputVector2.magnitude);
+        if(inputVector2.x != 0)
+        {
+            GameObject weapon = GameObject.FindGameObjectWithTag("Weapon");
+            SpriteRenderer sprite = weapon.GetComponent<SpriteRenderer>();
+            spriteRenderer.flipX = inputVector2.x < 0;
+            sprite.flipX = inputVector2.x < 0;
+        }
+    }
+}
