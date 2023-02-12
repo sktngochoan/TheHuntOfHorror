@@ -8,6 +8,7 @@ TagManager:
   - Area
   - Weapon
   - Bullet
+  - object
   layers:
   - Default
   - TransparentFX
