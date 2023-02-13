@@ -9,6 +9,8 @@ TagManager:
   - Weapon
   - Bullet
   - object
+  - New tag
+  - Player2
   layers:
   - Default
   - TransparentFX

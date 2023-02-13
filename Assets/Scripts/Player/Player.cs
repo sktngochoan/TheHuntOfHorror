@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator animator;
+    public AudioSource shootAudio;
     int vector = 1;
     public Vector3 offset = new Vector3(0, 0.1f, 0);
     void Awake()
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
             bullet.transform.eulerAngles = new Vector3(0, 0, -90);
             Rigidbody2D rg = bullet.GetComponent<Rigidbody2D>();
             rg.AddForce(weapon1.right * vector * 1000f);
+            shootAudio.Play();
             //shootSoundEffect.Play();
         }
     } 
