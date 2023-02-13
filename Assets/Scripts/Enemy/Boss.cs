@@ -2,26 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Boss : MonoBehaviour
 {
     private int health = 4;
     public int curentHealth;
+    public HealthBar healthBar;
     Animator animator;
     Timer deathTimer;
+    private Canvas canvas;
 
     void Start()
     {
         // Set max health for enemy
         curentHealth = health;
+        healthBar.setMaxHealth(health);
         // Create time runner to delete enemy
         deathTimer = gameObject.AddComponent<Timer>();
         deathTimer.Duration = 2f;
         // Aimation
         animator = GetComponent<Animator>();
+        // Health bar
+        canvas = gameObject.GetComponentInChildren<Canvas>();
     }
 
     private void Update()
     {
+        // Delete health bar when enemy is death
+        if (canvas != null && curentHealth <= 0)
+        {
+            //animator.SetFloat("Speed",0f);
+            Destroy(canvas.gameObject);
+        }
+
         // Delete enemy
         if (deathTimer.Finished && curentHealth <= 0)
         {
@@ -51,5 +63,6 @@ public class Enemy : MonoBehaviour
     void takeDamage(int damage)
     {
         curentHealth -= damage;
+        healthBar.SetHealth(curentHealth);
     }
 }
