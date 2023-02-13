@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
     }
     private void LateUpdate()
     {
+ 
         animator.SetFloat("Speed", inputVector2.magnitude);
         if(inputVector2.x != 0)
         {
