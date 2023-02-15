@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    private int health = 4;
+    private int health = 20;
     public int curentHealth;
     public HealthBar healthBar;
     Animator animator;
@@ -30,7 +30,6 @@ public class Boss : MonoBehaviour
         // Delete health bar when enemy is death
         if (canvas != null && curentHealth <= 0)
         {
-            //animator.SetFloat("Speed",0f);
             Destroy(canvas.gameObject);
         }
 
@@ -41,23 +40,20 @@ public class Boss : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        Rigidbody2D rigidbody2D = coll.gameObject.GetComponent<Rigidbody2D>();
-        if (rigidbody2D != null)
+        if (!collision.CompareTag("Bullet"))
+            return;
+        takeDamage((int)collision.GetComponent<Bullet>().damage);
+        if (curentHealth > 0)
         {
-            rigidbody2D.velocity = Vector2.zero;
         }
-        if (coll.gameObject.CompareTag("Bullet"))
+        else
         {
-            takeDamage(1);
-            if (curentHealth <= 0)
-            {
-                deathTimer.Run();
-                animator.SetTrigger("Dead");
-            }
-            Destroy(coll.gameObject);
+            deathTimer.Run();
+            animator.SetTrigger("Dead");
         }
+
     }
 
     void takeDamage(int damage)

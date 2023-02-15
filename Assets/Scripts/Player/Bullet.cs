@@ -5,8 +5,17 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     // death support
-    const float LifeSeconds = 2;
+    const float LifeSeconds = 10;
     Timer deathTimer;
+
+    public float damage;
+    public int per;
+
+    public void Init(float damage, int per)
+    {
+        this.damage = damage;
+        this.per = per;
+    }
 
     /// <summary>
     /// Start is called before the first frame update
@@ -25,10 +34,10 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         // kill bullet when timer is done
-        if (deathTimer.Finished)
-        {
-            Destroy(gameObject);
-        }
+        //if (deathTimer.Finished)
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 
     /// <summary>
