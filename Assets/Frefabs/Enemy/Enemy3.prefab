@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 3407894564981736531}
   - component: {fileID: 3407894564981736532}
   - component: {fileID: 4089918034210370651}
+  - component: {fileID: 1174264047}
   m_Layer: 0
   m_Name: Enemy3
   m_TagString: Untagged
@@ -111,7 +112,7 @@ Transform:
   m_Children:
   - {fileID: 3407894566253360856}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3407894564981736534
 SpriteRenderer:
@@ -269,6 +270,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8feb544ebf4fc14a808d9c5853efb2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curentHealth: 0
+  healthBar: {fileID: 3407894565857783305}
+--- !u!114 &1174264047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3407894564981737384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c666c3d030cb6742b459f78785433f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 2
 --- !u!1 &3407894565857783308
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,7 +527,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &3407894566253360858
 MonoBehaviour:

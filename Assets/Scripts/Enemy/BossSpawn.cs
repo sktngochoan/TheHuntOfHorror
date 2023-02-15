@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawn : MonoBehaviour
+public class BossSpawn : MonoBehaviour
 {
     public GameObject[] enemyPrefab;
     public int enemyCount;
@@ -15,13 +15,13 @@ public class EnemySpawn : MonoBehaviour
     {
         spawnEnemy();
         // start timer spawn normal enemy
-        spawnTimer=gameObject.AddComponent<Timer>();
+        spawnTimer = gameObject.AddComponent<Timer>();
         spawnTimer.Duration = duration;
         spawnTimer.Run();
     }
     private void Update()
     {
-        if(spawnTimer.Finished)
+        if (spawnTimer.Finished)
         {
             spawnEnemy();
             spawnTimer.Duration = duration;
